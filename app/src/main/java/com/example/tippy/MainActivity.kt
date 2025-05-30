@@ -65,6 +65,11 @@ class MainActivity : AppCompatActivity() {
 
     }
     private fun computeTipAndTotal() {
+        if(etBaseAmount.text.isEmpty()){
+            tvTipAmount.text=""
+            tvTotalAmount.text=""
+            return
+        }
         //1.Get the Value of the base;
         val baseAmount = etBaseAmount.text.toString().toDouble()
         val tipPercent = seekBarTip.progress
@@ -73,8 +78,8 @@ class MainActivity : AppCompatActivity() {
         val tipAmount = baseAmount *tipPercent/100
         val totalAmount = baseAmount+tipAmount
         //2 update the UI
-        tvTipAmount.text=tipAmount.toString()
-        tvTotalAmount.text=totalAmount.toString()
+        tvTipAmount.text="%.2f".format(tipAmount)
+        tvTotalAmount.text="%2f".format(totalAmount)
     }
 }
 
